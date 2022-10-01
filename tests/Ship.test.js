@@ -1,4 +1,4 @@
-import Ship from '../modules/Ship'
+import Ship from '../factories/Ship'
 
 describe('Ship functions', () => {
   let ship
