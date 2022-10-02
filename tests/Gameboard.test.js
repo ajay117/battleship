@@ -3,15 +3,15 @@ import Ship from '../factories/Ship'
 import { shipTypes } from '../modules/shipTypes'
 
 describe('GameBoard function', () => {
-  let carrier
+  //   let carrier
   let gameBoard
   beforeEach(() => {
-    carrier = Ship(shipTypes.carrier)
+    // carrier = Ship(shipTypes.carrier)
     gameBoard = GameBoard(20)
   })
 
   test('Check placeship function', () => {
-    expect(gameBoard.placeShip(0, carrier)).toEqual([
+    expect(gameBoard.placeShip(0, 'carrier')).toEqual([
       { hasShip: true, isHit: false },
       { hasShip: true, isHit: false },
       { hasShip: true, isHit: false },
@@ -36,11 +36,16 @@ describe('GameBoard function', () => {
   })
 
   test('Check if ship overflow outside board', () => {
-    expect(gameBoard.placeShip(6)).toBe('Cannot place ship')
+    expect(gameBoard.placeShip(6, 'carrier')).toBe('Cannot place ship')
   })
 
+    test('Check placing battleship', () => {
+      expect(gameBoard.placeShip(7, 'battleship')).toBe('Cannot place ship')
+    })
+
   test('Check placing carrier and battleship', () => {
-    expect(gameBoard.placeShip(3,10)).toEqual([
+    gameBoard.placeShip(3, 'carrier')
+    expect(gameBoard.placeShip(10, 'battleship')).toEqual([
       null,
       null,
       null,
@@ -66,10 +71,10 @@ describe('GameBoard function', () => {
       },
       null,
       null,
-      {hasShip: true, isHit: false},
-      {hasShip: true, isHit: false},
-      {hasShip: true, isHit: false},
-      {hasShip: true, isHit: false},
+      { hasShip: true, isHit: false },
+      { hasShip: true, isHit: false },
+      { hasShip: true, isHit: false },
+      { hasShip: true, isHit: false },
       null,
       null,
       null,
