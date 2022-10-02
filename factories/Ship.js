@@ -11,6 +11,8 @@ export default function Ship(length) {
     })
   }
   return {
+    // length,
+    shipArr,
     hit,
     isSunk,
   }
