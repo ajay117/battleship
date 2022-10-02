@@ -23,8 +23,6 @@ describe('GameBoard function', () => {
   })
 
   test('Check if ship overflow outside board', () => {
-    expect(gameBoard.placeShip(6, carrier)).toBe('Cannot place ship')
+    expect(gameBoard.placeShip(6)).toBe('Cannot place ship')
   })
-
-  
 })
