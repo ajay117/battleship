@@ -10,32 +10,20 @@ export default function GameBoard(length) {
     let ship = Ship(shipTypes[shipType])
     let boardStart = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
     let boardEnd = [9, 19, 29, 39, 49, 59, 69, 79, 89, 99]
-    let pushship = () => {
-      let board = [...gameBoard]
-
-        // Place Carrier
-        board.splice(location, ship.shipArr.length)
-        ship.shipArr.forEach((element) => {
-          let obj = { hasShip: true, isHit: false }
-          board.splice(location, 0, obj)
-          location++
-        })
-        return board
+    let pushShip = () => {
+      // Place Carrier
+      gameBoard.splice(location, ship.shipArr.length)
+      ship.shipArr.forEach((element) => {
+        let obj = { hasShip: true, isHit: false }
+        gameBoard.splice(location, 0, obj)
+        location++
+      })
+      return gameBoard
     }
 
     if (location >= 0 && location <= 9) {
       if (location + ship.shipArr.length - 1 <= 9) {
-        
-
-        // Place Carrier
-        gameBoard.splice(location, ship.shipArr.length)
-        ship.shipArr.forEach((element) => {
-          let obj = { hasShip: true, isHit: false }
-          gameBoard.splice(location, 0, obj)
-          location++
-        })
-        
-        return gameBoard
+        return pushShip()
       } else {
         return 'Cannot place ship'
       }
@@ -43,16 +31,7 @@ export default function GameBoard(length) {
 
     if (location >= 10 && location <= 19) {
       if (location + ship.shipArr.length - 1 <= 19) {
-        let board = [...gameBoard]
-
-        // Place Carrier
-        board.splice(location, ship.shipArr.length)
-        ship.shipArr.forEach((element) => {
-          let obj = { hasShip: true, isHit: false }
-          board.splice(location, 0, obj)
-          location++
-        })
-        return board
+        return pushShip()
       } else {
         return 'Cannot place ship'
       }
@@ -60,16 +39,7 @@ export default function GameBoard(length) {
 
     if (location >= 20 && location <= 29) {
       if (location + ship.shipArr.length - 1 <= 29) {
-        let board = [...gameBoard]
-
-        // Place Carrier
-        board.splice(location, ship.shipArr.length)
-        ship.shipArr.forEach((element) => {
-          let obj = { hasShip: true, isHit: false }
-          board.splice(location, 0, obj)
-          location++
-        })
-        return board
+        return pushShip()
       } else {
         return 'Cannot place ship'
       }
